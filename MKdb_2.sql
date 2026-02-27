@@ -1,48 +1,48 @@
---USE movies
+USE movies
 
---SELECT name FROM moviestar JOIN starsin ON starname=name
---	JOIN movie as m ON title=movietitle
---	WHERE gender = 'F' AND movietitle='Terms of Endearment'
+SELECT name FROM moviestar JOIN starsin ON starname=name
+	JOIN movie as m ON title=movietitle
+	WHERE gender = 'F' AND movietitle='Terms of Endearment'
 
---SELECT m.name FROM moviestar AS m
-	--JOIN starsin ON starname=name
-	--JOIN movie ON movietitle = title
-	--JOIN studio ON studio.name=studioname
-	--WHERE studio.name ='MGM' AND movieyear=1995
+SELECT m.name FROM moviestar AS m
+	JOIN starsin ON starname=name
+	JOIN movie ON movietitle = title
+	JOIN studio ON studio.name=studioname
+	WHERE studio.name ='MGM' AND movieyear=1995
 
---USE pc
+USE pc
 
---SELECT maker, speed FROM laptop
---	JOIN product ON laptop.model = product.model
---	WHERE hd>=9
+SELECT maker, speed FROM laptop
+	JOIN product ON laptop.model = product.model
+	WHERE hd>=9
 
---(SELECT p.model, price FROM product as p
---	JOIN laptop AS l ON l.model = p.model
---	WHERE maker='B')
---	UNION
---(SELECT p.model, price FROM product as p
---	JOIN printer AS pr ON pr.model = p.model
---	WHERE maker='B')
---	UNION
---(SELECT p.model, price FROM product as p
---	JOIN pc ON pc.model = p.model
---	WHERE maker='B')
---	ORDER BY price
+(SELECT p.model, price FROM product as p
+	JOIN laptop AS l ON l.model = p.model
+	WHERE maker='B')
+	UNION
+(SELECT p.model, price FROM product as p
+	JOIN printer AS pr ON pr.model = p.model
+	WHERE maker='B')
+	UNION
+(SELECT p.model, price FROM product as p
+	JOIN pc ON pc.model = p.model
+	WHERE maker='B')
+	ORDER BY price
 
---SELECT DISTINCT p1.hd FROM pc as p1, pc as p2
---	WHERE p1.hd = p2.hd AND NOT (p1.code = p2.code)
+SELECT DISTINCT p1.hd FROM pc as p1, pc as p2
+	WHERE p1.hd = p2.hd AND NOT (p1.code = p2.code)
 
---SELECT DISTINCT p1.model, p2.model FROM pc as p1, pc as p2
---	WHERE p1.speed = p2.speed AND p1.ram = p2.ram AND NOT (p1.code = p2.code) AND p1.model<p2.model
+SELECT DISTINCT p1.model, p2.model FROM pc as p1, pc as p2
+	WHERE p1.speed = p2.speed AND p1.ram = p2.ram AND NOT (p1.code = p2.code) AND p1.model<p2.model
 
---SELECT maker FROM product
---	JOIN pc as p1 ON p1.model = product.model
---	JOIN pc as p2 ON p2.model = product.model
---	WHERE p1.speed>=500 AND P2.SPEED>=500 AND NOT(p1.code=p2.code) 
+SELECT maker FROM product
+	JOIN pc as p1 ON p1.model = product.model
+	JOIN pc as p2 ON p2.model = product.model
+	WHERE p1.speed>=500 AND P2.SPEED>=500 AND NOT(p1.code=p2.code) 
 
 USE ships
 
---SELECT name FROM ships JOIN classes ON ships.class=classes.class WHERE displacement>=35000
+SELECT name FROM ships JOIN classes ON ships.class=classes.class WHERE displacement>=35000
 
 SELECT ships.name, bore, numguns FROM ships 
 	JOIN classes ON ships.class=classes.class
